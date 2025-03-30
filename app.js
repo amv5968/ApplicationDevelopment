@@ -2,10 +2,10 @@
    const express = require('express');
    const swaggerUi = require('swagger-ui-express');
    const swaggerJSDoc = require('swagger-jsdoc');
-
+ 
    const app = express();
-   const port = 3000;
-
+   const port = 4000;
+   app.use(express.json()); 
    // Swagger definition
    const swaggerOptions = {
        swaggerDefinition: {
@@ -42,10 +42,10 @@
    app.use('/api', itemsRouter);
 
    const customersRouter = require('./routes/customers');
-   app.use('/api', customersRouter);
+   app.use('/api/customers', customersRouter);
 
    const orderRouter = require('./routes/orders');
-   app.use('/api', orderRouter);
+   app.use('/api/orders', orderRouter);
 
    app.listen(port, () => {
        console.log(`Server running at http://localhost:${port}`);
